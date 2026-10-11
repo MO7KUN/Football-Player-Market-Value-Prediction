@@ -1,5 +1,11 @@
 # Football Player Market Value Prediction
 
+## Web interface
+
+[Open Player Value Prediction](https://MO7KUN.github.io/Football-Player-Market-Value-Prediction/)
+
+The GitHub Pages project link automatically opens the interactive results explorer. Filters and visualizations run in your browser.
+
 **Analyse des performances et de la valeur marchande des joueurs de football**
 
 A complete reproducible study of real Transfermarkt-derived data: collection, preprocessing, exploratory analysis, temporal regression, hyperparameter optimization, player segmentation, uncertainty assessment and reported transfer-fee analysis.
