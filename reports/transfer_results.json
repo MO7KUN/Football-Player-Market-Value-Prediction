@@ -1,0 +1,12 @@
+{
+  "paid_transfers": 337,
+  "spearman_with_fee": {
+    "market_value_in_eur": 0.8766288954917592,
+    "minutes_played": 0.3041101657162025,
+    "goals_per90": 0.2585752694662544,
+    "assists_per90": 0.22757049005846505,
+    "age": -0.418362248449105
+  },
+  "median_fee_eur": 9100000.0,
+  "median_fee_to_prior_value_ratio": 1.0
+}

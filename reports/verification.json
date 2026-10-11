@@ -1,0 +1,17 @@
+{
+  "verified_at_utc": "2026-10-11T02:31:52.267712+00:00",
+  "pytest": {
+    "passed": 9,
+    "failed": 0,
+    "command": "python -m pytest -q"
+  },
+  "syntax_check": "python -m compileall -q src: passed",
+  "readme_relative_links": "all resolve",
+  "notebook": "valid nbformat 4 JSON",
+  "figures": 11,
+  "inference": "CLI example and reloaded model match saved test prediction",
+  "model_sha256": {
+    "artifacts\\profiles.joblib": "85cd37c7003337b1c647270d622cd0c02b7851ab815ccd5481d082ca7ae6df5f",
+    "artifacts\\valuation.joblib": "a19183c70f0fd74a0c77e783505751558a93ea9b0a2e9d05b7800a6e30925cc5"
+  }
+}

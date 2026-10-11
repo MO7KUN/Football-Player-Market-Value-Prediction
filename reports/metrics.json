@@ -1,0 +1,149 @@
+{
+  "selected_model": "gradient_boosting",
+  "features": [
+    "age",
+    "height_in_cm",
+    "appearances",
+    "minutes_played",
+    "goals",
+    "assists",
+    "yellow_cards",
+    "red_cards",
+    "goals_per90",
+    "assists_per90",
+    "yellow_per90",
+    "minutes_per_appearance",
+    "position",
+    "foot",
+    "league"
+  ],
+  "search": {
+    "ridge": {
+      "best_parameters": {
+        "regressor__model__alpha": 10
+      },
+      "cv_mae_eur": 7518359.98793267
+    },
+    "random_forest": {
+      "best_parameters": {
+        "regressor__model__max_depth": null,
+        "regressor__model__min_samples_leaf": 3
+      },
+      "cv_mae_eur": 7842936.961364914
+    },
+    "gradient_boosting": {
+      "best_parameters": {
+        "regressor__model__l2_regularization": 10,
+        "regressor__model__max_leaf_nodes": 15
+      },
+      "cv_mae_eur": 7621902.310849733
+    }
+  },
+  "validation_2023": {
+    "ridge": {
+      "n": 1965,
+      "mae_eur": 7132931.837855,
+      "rmse_eur": 15151641.090369023,
+      "r2": 0.26244042797020617,
+      "log_mae": 0.6333026113064274,
+      "median_ape_percent": 48.15237209915762
+    },
+    "random_forest": {
+      "n": 1965,
+      "mae_eur": 7088936.630794654,
+      "rmse_eur": 13633150.15364651,
+      "r2": 0.4028682122269919,
+      "log_mae": 0.626564781906905,
+      "median_ape_percent": 48.06015154717846
+    },
+    "gradient_boosting": {
+      "n": 1965,
+      "mae_eur": 6787701.2090287935,
+      "rmse_eur": 12872271.17014821,
+      "r2": 0.46766120727315563,
+      "log_mae": 0.6048927018444629,
+      "median_ape_percent": 47.19213474104774
+    }
+  },
+  "test_2025": {
+    "selected": {
+      "n": 1865,
+      "mae_eur": 7645486.719807769,
+      "rmse_eur": 14542435.549501812,
+      "r2": 0.4736894698993154,
+      "log_mae": 0.6341820727857599,
+      "median_ape_percent": 48.60289671528824
+    },
+    "median_baseline": {
+      "n": 1865,
+      "mae_eur": 11726809.651474532,
+      "rmse_eur": 21955535.8613673,
+      "r2": -0.19965355755775782,
+      "log_mae": 1.039502549371018,
+      "median_ape_percent": 72.72727272727273
+    },
+    "persistence": {
+      "n": 1865,
+      "mae_eur": 1779571.0455764076,
+      "rmse_eur": 3522891.4367415616,
+      "r2": 0.9691136716821167,
+      "log_mae": 0.15386667934076195,
+      "median_ape_percent": 12.5
+    },
+    "selected_on_persistence_subset": {
+      "n": 1865,
+      "mae_eur": 7645486.719807769,
+      "rmse_eur": 14542435.549501812,
+      "r2": 0.4736894698993154,
+      "log_mae": 0.6341820727857599,
+      "median_ape_percent": 48.60289671528824
+    },
+    "unseen_players": {
+      "n": 629,
+      "mae_eur": 5826230.057380413,
+      "rmse_eur": 9818300.162239023,
+      "r2": 0.6158097461597247,
+      "log_mae": 0.6039058811293042,
+      "median_ape_percent": 50.190519194096126
+    }
+  },
+  "interval": {
+    "nominal_coverage": 0.9,
+    "calibration_year": 2024,
+    "log_radius": 1.2319210758812797,
+    "test_coverage": 0.8847184986595175,
+    "median_width_eur": 20122649.379154656
+  },
+  "split_rows": {
+    "train": 8223,
+    "validation": 1965,
+    "calibration": 2012,
+    "test": 1865
+  },
+  "clustering": {
+    "k": 3,
+    "silhouette_by_k": {
+      "2": 0.25032834718657115,
+      "3": 0.2548186594325463,
+      "4": 0.24084481365044957,
+      "5": 0.2106502934331238,
+      "6": 0.2156414290625474
+    },
+    "pca_explained_variance": [
+      0.3607008421746203,
+      0.2842002832059246
+    ],
+    "features": [
+      "minutes_played",
+      "goals_per90",
+      "assists_per90",
+      "yellow_per90",
+      "minutes_per_appearance"
+    ],
+    "test_counts": {
+      "0": 746,
+      "1": 712,
+      "2": 407
+    }
+  }
+}

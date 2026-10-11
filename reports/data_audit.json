@@ -1,0 +1,40 @@
+{
+  "rows": 14065,
+  "players": 4815,
+  "rows_by_year": {
+    "2018": 1947,
+    "2019": 1926,
+    "2020": 213,
+    "2021": 2130,
+    "2022": 2007,
+    "2023": 1965,
+    "2024": 2012,
+    "2025": 1865
+  },
+  "missing_percent": {
+    "age": 0.0,
+    "height_in_cm": 0.014,
+    "appearances": 0.0,
+    "minutes_played": 0.0,
+    "goals": 0.0,
+    "assists": 0.0,
+    "yellow_cards": 0.0,
+    "red_cards": 0.0,
+    "goals_per90": 0.0,
+    "assists_per90": 0.0,
+    "yellow_per90": 0.0,
+    "minutes_per_appearance": 0.0,
+    "position": 0.0,
+    "foot": 0.071,
+    "league": 0.0
+  },
+  "raw_rows": {
+    "players": 50149,
+    "appearances": 1894350,
+    "valuations": 656301
+  },
+  "raw_max_dates": {
+    "appearances": "2026-06-28",
+    "valuations": "2026-06-12"
+  }
+}

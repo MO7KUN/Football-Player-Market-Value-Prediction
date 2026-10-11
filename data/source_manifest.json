@@ -1,0 +1,26 @@
+{
+  "players": {
+    "url": "https://pub-e682421888d945d684bcae8890b0ec20.r2.dev/data/players.csv.gz",
+    "downloaded_at_utc": "2026-10-11T02:17:16.649212+00:00",
+    "bytes": 4389958,
+    "sha256": "d22e407981d5b51a79bf8ff59835729f3526f7dc3495a6d8ed2f852ed2e86403"
+  },
+  "appearances": {
+    "url": "https://pub-e682421888d945d684bcae8890b0ec20.r2.dev/data/appearances.csv.gz",
+    "downloaded_at_utc": "2026-10-11T02:17:27.024360+00:00",
+    "bytes": 45253638,
+    "sha256": "e096c2b158fc3d52c4550526c4d4850dd62f31007652f4bcae112eadb1646802"
+  },
+  "player_valuations": {
+    "url": "https://pub-e682421888d945d684bcae8890b0ec20.r2.dev/data/player_valuations.csv.gz",
+    "downloaded_at_utc": "2026-10-11T02:17:29.050346+00:00",
+    "bytes": 7197935,
+    "sha256": "608e32e5ad2231074f3505c469ad727be66d7e6efda6af918afd85379439631d"
+  },
+  "transfers": {
+    "url": "https://pub-e682421888d945d684bcae8890b0ec20.r2.dev/data/transfers.csv.gz",
+    "downloaded_at_utc": "2026-10-11T02:20:16.964509+00:00",
+    "bytes": 5809514,
+    "sha256": "90326983daf7e6ac7aabdfe62b90936d9bf1dd2171e53dec75c3751eb1620a83"
+  }
+}
