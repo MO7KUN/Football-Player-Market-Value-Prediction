@@ -407,19 +407,14 @@ Project source code: [MIT](LICENSE). Data: upstream [CC0-1.0](https://github.com
 def write_html(m,test):
     rows=test[['name','position','league','age','market_value_in_eur','prediction_eur','cluster']].to_dict('records')
     payload=json.dumps(rows,ensure_ascii=False).replace('</','<\\/')
-    text='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Football market value research</title>
-<style>body{font:16px system-ui;margin:40px auto;padding:0 24px;max-width:1200px;color:#183b56;background:#f7f8fa}h1{font-size:32px}small{color:#526574}.stats{display:flex;gap:32px;flex-wrap:wrap;margin:28px 0}.stats b{display:block;font-size:26px}input,select{padding:10px;border:1px solid #bcc8cf;border-radius:4px;margin:6px}table{width:100%;border-collapse:collapse;background:white}th,td{text-align:left;padding:12px;border-bottom:1px solid #dae1e6}th{cursor:pointer}img{width:100%;max-width:750px}.wrap{overflow-x:auto}a{color:#166c80}</style>
-<h1>Football Player Market Value Prediction</h1><p>Measured 2025 holdout results · five European leagues · historical Transfermarkt data</p>
-<div class="stats">STATS</div><p>Market estimates are not actual transfer fees. These are historical observations, not current prices.</p>
-<p><a href="../README.md">Full methodology and limitations</a> · <a href="metrics.json">Machine-readable results</a></p>
-<img src="figures/predictions.png" alt="Predicted versus observed market value on log scales">
-<h2>Explore real held-out players</h2><label>Search name <input id="q" placeholder="Player name"></label><label>Position <select id="position"><option value="">All</option></select></label><label>Profile <select id="profile"><option value="">All</option></select></label>
-<p id="count"></p><div class="wrap"><table><thead><tr><th data-key="name">Player ↕</th><th data-key="position">Position ↕</th><th data-key="league">League ↕</th><th data-key="age">Age ↕</th><th data-key="market_value_in_eur">Observed (€m) ↕</th><th data-key="prediction_eur">Predicted (€m) ↕</th><th data-key="cluster">Profile ↕</th></tr></thead><tbody id="rows"></tbody></table></div>
-<p><small>Values observed May–July 2025. Click column headers to sort. Search and filters work locally; no external requests. Display is limited to 100 matching rows.</small></p>
-<h2>Performance profiles</h2><img src="figures/cluster_heatmap.png" alt="Standardized performance characteristics by cluster"><h2>Actual paid transfers</h2><img src="figures/transfer_fees.png" alt="Paid transfer fees versus strictly preceding estimates">
-<script>const data=PAYLOAD;let key='market_value_in_eur',dir=-1;const q=document.getElementById('q'),p=document.getElementById('position'),c=document.getElementById('profile');for(const v of [...new Set(data.map(r=>r.position))].sort()){let o=new Option(v,v);p.add(o)}for(const v of [...new Set(data.map(r=>r.cluster))].sort()){c.add(new Option(v,v))}function render(){let rows=data.filter(r=>r.name.toLowerCase().includes(q.value.toLowerCase())&&(!p.value||r.position===p.value)&&(c.value===''||String(r.cluster)===c.value));rows.sort((a,b)=>dir*(typeof a[key]==='string'?a[key].localeCompare(b[key]):a[key]-b[key]));document.getElementById('count').textContent=rows.length+' matching players';let body=document.getElementById('rows');body.replaceChildren();for(const r of rows.slice(0,100)){let tr=document.createElement('tr');for(const v of [r.name,r.position,r.league,r.age.toFixed(1),(r.market_value_in_eur/1e6).toFixed(2),(r.prediction_eur/1e6).toFixed(2),r.cluster]){let td=document.createElement('td');td.textContent=v;tr.append(td)}body.append(tr)}}for(const el of [q,p,c])el.addEventListener('input',render);document.querySelectorAll('th[data-key]').forEach(th=>th.addEventListener('click',()=>{dir=key===th.dataset.key?-dir:-1;key=th.dataset.key;render()}));render();</script></html>'''
-    stats=f'<div><b>{len(test):,}</b>Test players</div><div><b>€{m["test_2025"]["selected"]["mae_eur"]/1e6:.2f}m</b>Test MAE</div><div><b>{m["test_2025"]["selected"]["r2"]:.3f}</b>Test R²</div><div><b>{m["clustering"]["k"]}</b>Profiles</div>'
-    Path('reports/explorer.html').write_text(text.replace('STATS',stats).replace('PAYLOAD',payload),encoding='utf-8')
+    template=Path('reports/template.html').read_text(encoding='utf-8')
+    metrics=m['test_2025']['selected']
+    values=[('RESEARCH COHORT',f'{len(test):,}','Held-out test players','Five European leagues'),
+            ('PREDICTION ERROR',f'€{metrics["mae_eur"]/1e6:.2f}m','Mean absolute error','2025 final test set'),
+            ('MODEL PERFORMANCE',f'{metrics["r2"]:.3f}','Test R² score','Historical evaluation'),
+            ('PLAYER SEGMENTS',str(m['clustering']['k']),'Performance profiles','Unsupervised clustering')]
+    stats=''.join(f'<article class="stat"><p class="eyebrow">{label}</p><b>{value}</b><span>{description}</span><br><small>{note}</small></article>' for label,value,description,note in values)
+    Path('reports/explorer.html').write_text(template.replace('__STATS__',stats).replace('__PLAYER_DATA__',payload),encoding='utf-8')
 
 def write_notebook():
     cells=[]
